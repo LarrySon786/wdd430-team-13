@@ -19,6 +19,7 @@ body {
   font-family: var(--font-sans);
   color: var(--brown);
   background-color: var(--cream);
+  margin-left: 160px;
 }
 
 h1,
@@ -37,4 +38,103 @@ a {
 
 ul {
   list-style: none;
+}
+
+/* ****************************** */
+/* HERO CONTAINER */
+/* ****************************** */
+.navigation {
+  height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding: 20px;
+    border-right: 1px solid var(--terracotta);
+}
+
+
+
+/* ****************************** */
+/* HERO CONTAINER */
+/* ****************************** */
+
+.hero-container {
+  position: relative;
+
+  & h1 {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    background-color: rgb(255, 255, 255, 0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  & span {
+    display: inline-block;
+    font-size: smaller;
+    color: white;
+  }
+
+  & div a {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background-color: var(--cream);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.hero-image {
+  max-width: 100%;
+  max-height: auto;
+}
+
+/* ****************************** */
+/* Home Page */
+/* ****************************** */
+.blank-text-area {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem;
+
+  & p {
+    margin: 2rem;
+  }
+}
+
+
+
+/* ****************************** */
+/* Footer  */
+/* ****************************** */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--sage);
+  border-top: 4px solid var(--terracotta);
+
+  & div p {
+    font-weight: 700;
+  }
+
+  & div a {
+    background-color: var(--cream);
+    border-radius: 0.5rem;
+    opacity: 0.5;
+    padding: 0.12rem;
+    max-height: 1.6rem;
+  }
+}
+
+.logo {
+  background-color: var(--cream);
+  border-radius: 2rem;
+  padding: 1rem;
 }

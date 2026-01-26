@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./Logo";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -12,9 +13,9 @@ const navItems = [
 
 export default function Navigation() {
   return (
-    <aside>
+    <aside className="navigation">
       <div>
-        <h2>Logo</h2>
+        <Logo />
       </div>
 
       <nav aria-label="Main navigation">
