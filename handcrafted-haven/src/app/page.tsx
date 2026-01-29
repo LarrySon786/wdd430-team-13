@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <main>
       <div className="hero-container">
+        {/* <img src='../public/hero.webp'></img> */}
         <Image src='/hero.webp' alt='Hero Image of webpage' width={1600} height={500} className='hero-image' />
         <h1>{/* <span>Welcome To</span> */}HOME PAGE</h1>
         <div>

@@ -54,7 +54,9 @@ ul {
   padding: 20px;
   border-right: 1px solid var(--terracotta);
   box-shadow: 3px 10px 10px black;
-
+  text-align: center;
+  line-height: 2.75rem;
+  font-weight: 600;
 }
 
 
@@ -65,12 +67,15 @@ ul {
 
 .hero-container {
   position: relative;
+  width: 100%;
+  /* aspect-ratio: 16 / 9; */
 
   & h1 {
     position: absolute;
-    bottom: 15%;
-    left: 10%;
-    background-color: rgb(255, 255, 255, 0.7);
+    bottom: 5%;
+    right: 5%;
+    background-color: var(--cream);
+    background-color: 0.7;
     padding: 1rem;
     border-radius: 0.5rem;
   }
@@ -78,7 +83,7 @@ ul {
   & span {
     display: inline-block;
     font-size: smaller;
-    color: white;
+    color: var(--cream);
   }
 
   & div a {
@@ -121,17 +126,21 @@ footer {
   padding: 1rem;
   background-color: var(--sage);
   border-top: 4px solid var(--terracotta);
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
 
   & div p {
     font-weight: 700;
   }
 
   & div a {
-    background-color: var(--cream);
+    /* background-color: var(--cream); */
     border-radius: 0.5rem;
-    opacity: 0.5;
+    /* opacity: 0.5; */
     padding: 0.12rem;
     max-height: 1.6rem;
+    text-align: center;
+    color: var(--cream)
   }
 }
 
@@ -139,4 +148,38 @@ footer {
   background-color: var(--cream);
   border-radius: 2rem;
   padding: 1rem;
+  text-align: center;
 }
+
+
+/* ****************************** */
+/* MEDIA QUERY for responsive flow  */
+/* ****************************** */
+
+@media screen and (max-width: 750px) { 
+
+
+/* ****************************** */
+/* MEDIA Footer  */
+/* ****************************** */
+  footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 0.5rem;
+
+    & div {
+      padding: 0.5rem;
+    }
+  }
+
+
+
+}
+
+
+
+
+
+
+

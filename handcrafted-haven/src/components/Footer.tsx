@@ -15,8 +15,10 @@ export default function Footer() {
             <div>
                 <a href='https://github.com/LarrySon786/wdd430-team-13'>Github Repository</a>
             </div>
+            <div>
+                <Logo />
+            </div>
             
-            <Logo />
         </footer>
     </>
 }
