@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/products/list", label: "Products" },
+  { href: "/products", label: "Products" },
   //{ href: "/sellers", label: "Sellers" },
   //{ href: "/seller/profile", label: "Seller Profile" },
   { href: "/reviews", label: "Reviews" },
