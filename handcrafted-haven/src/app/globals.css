@@ -72,12 +72,13 @@ ul {
 
   & h1 {
     position: absolute;
-    bottom: 5%;
-    right: 5%;
+    top: 10%;
+    left: 50%;
     background-color: var(--cream);
     background-color: 0.7;
     padding: 1rem;
     border-radius: 0.5rem;
+    transform: translate(-50%, -50%);
   }
   
   & span {
@@ -140,7 +141,7 @@ footer {
     padding: 0.12rem;
     max-height: 1.6rem;
     text-align: center;
-    color: var(--cream)
+    color: var(--cream);
   }
 }
 
