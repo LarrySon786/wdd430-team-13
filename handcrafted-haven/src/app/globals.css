@@ -68,6 +68,9 @@ ul {
 .hero-container {
   position: relative;
   width: 100%;
+  height: 50vh; /* takes 50% of viewport height */
+  min-height: 300px; /*min for smaller screens*/
+  max-height: 500px; /*max for larger screens*/ 
   /* aspect-ratio: 16 / 9; */
 
   & h1 {
@@ -78,7 +81,7 @@ ul {
     background-color: 0.7;
     padding: 1rem;
     border-radius: 0.5rem;
-    transform: translate(-50%, -50%);
+    z-index: 2;
   }
   
   & span {
@@ -94,6 +97,7 @@ ul {
     background-color: var(--cream);
     padding: 1rem;
     border-radius: 0.5rem;
+    z-index: 2;
   }
 }
 
@@ -173,9 +177,131 @@ footer {
       padding: 0.5rem;
     }
   }
+}
 
+/* ****************************** */
+/* Hamburger Button (Mobile Only) */
+/* ****************************** */
+.hamburger-btn {
+  display: none;
+  /* Hidden on desktop */
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  background-color: var(--sage);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
+.hamburger-icon {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 0 auto;
+  background-color: var(--brown);
+  transition: background-color 0.2s;
+}
 
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--brown);
+  transition: transform 0.2s;
+}
+
+.hamburger-icon::before {
+  top: -7px;
+}
+
+.hamburger-icon::after {
+  top: 7px;
+}
+
+/* Hamburger "X" when open */
+.hamburger-icon.open {
+  background-color: transparent;
+}
+
+.hamburger-icon.open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.hamburger-icon.open::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Overlay behind menu */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* ****************************** */
+/* Mobile Responsive (max 768px) */
+/* ****************************** */
+@media (max-width: 768px) {
+
+  /* Remove body margin on mobile */
+  body {
+    margin-left: 0;
+  }
+
+  /* Show hamburger button */
+  .hamburger-btn {
+    display: block;
+  }
+
+  /* Hide nav by default, slide in when open */
+  .navigation {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .navigation.nav-open {
+    transform: translateX(0);
+  }
+
+  /* Show overlay when menu is open */
+  .nav-overlay {
+    display: block;
+  }
+
+  /* Hero adjustments for mobile */
+  .hero-container h1 {
+    font-size: 1.5rem;
+    left: 5%;
+    bottom: 10%;
+    padding: 0.5rem;
+  }
+
+  .hero-container div a {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Footer stacks on mobile */
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 }
 
 

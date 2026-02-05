@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <div className="hero-container">
         {/* <img src='../public/hero.webp'></img> */}
-        <Image src='/hero.webp' alt='Hero Image of webpage' width={1600} height={500} className='hero-image' />
+        <Image src='/hero.webp' alt='Hero Image of webpage' fill priority className='hero-image' sizes="100vw" style={{ objectFit: 'cover'}} />
         <h1>{/* <span>Welcome To</span> */}HOME PAGE</h1>
         <div>
           <a href='/login'>Login Box</a>

@@ -1,0 +1,164 @@
+/* Reviews Page Styles */
+.reviewsPage {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.reviewsPage h1 {
+    margin-bottom: 0.5rem;
+}
+
+.pageDescription {
+    color: var(--brown);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+/* Review Form Section */
+.reviewFormSection {
+    margin-bottom: 3rem;
+}
+
+.reviewForm {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(125, 71, 42, 0.1);
+}
+
+.reviewForm h2 {
+    margin-bottom: 1.5rem;
+    color: var(--brown);
+}
+
+.formGroup {
+    margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--brown);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--sage);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brown);
+    background-color: var(--cream);
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submitBtn {
+    background-color: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submitBtn:hover {
+    background-color: #c45d48;
+}
+
+.successMessage {
+    background-color: var(--sage);
+    color: var(--brown);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Reviews List Section */
+.reviewsListSection h2 {
+    margin-bottom: 1.5rem;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reviewCard {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(125, 71, 42, 0.1);
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.productName {
+    font-weight: 700;
+    color: var(--brown);
+}
+
+.rating {
+    font-size: 1rem;
+}
+
+.reviewText {
+    color: var(--brown);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.reviewFooter {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--brown);
+    opacity: 0.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .reviewsPage {
+        padding: 1rem;
+    }
+
+    .reviewForm {
+        padding: 1.5rem;
+    }
+
+    .reviewHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .reviewFooter {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
