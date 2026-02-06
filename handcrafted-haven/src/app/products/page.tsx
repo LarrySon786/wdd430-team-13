@@ -1,8 +1,13 @@
 import "./product.css";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/components/products";
+import { getUiProducts } from "../../database/products";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getUiProducts();
+
+  //console.log("FIRST PRODUCT:", products[0]);
+
+
   return (
     <main className="page">
       <header className="page__header">
