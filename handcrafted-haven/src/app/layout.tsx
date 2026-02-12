@@ -1,7 +1,7 @@
 import "./globals.css";
-//import Navigation from "@/components/Navigation";
 import NavigationClient from "@/components/NavigationClient";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 
 export default function RootLayout({
   children,
@@ -11,9 +11,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <NavigationClient />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <NavigationClient />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

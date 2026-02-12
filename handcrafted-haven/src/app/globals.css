@@ -47,7 +47,7 @@ ul {
   height: 100%;
   width: 160px;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -133,6 +133,23 @@ ul {
 .hero-image {
   max-width: 100%;
   max-height: 100%;
+}
+
+/* Login Button in Hero */
+.login-btn {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background-color: var(--cream);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.login-btn:hover {
+  background-color: white;
+  transform: scale(1.05);
 }
 
 /* ****************************** */
@@ -279,7 +296,7 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 999;
 }
 
 /* ****************************** */
