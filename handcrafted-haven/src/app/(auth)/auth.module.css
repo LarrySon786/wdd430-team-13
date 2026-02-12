@@ -1,0 +1,140 @@
+/* Auth Pages Styles (Login & Register) */
+
+.authPage {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.authContainer {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(125, 71, 42, 0.15);
+    width: 100%;
+    max-width: 420px;
+}
+
+.authContainer h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--brown);
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--brown);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup label {
+    font-weight: 600;
+    color: var(--brown);
+}
+
+.formGroup input {
+    padding: 0.875rem;
+    border: 2px solid var(--sage);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--brown);
+    background-color: var(--cream);
+    transition: border-color 0.2s;
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: var(--terracotta);
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.submitBtn {
+    background-color: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+}
+
+.submitBtn:hover {
+    background-color: #c45d48;
+}
+
+.submitBtn:active {
+    transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.errorMessage {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.successMessage {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.authFooter {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--brown);
+}
+
+.authFooter a {
+    color: var(--terracotta);
+    font-weight: 600;
+}
+
+.authFooter a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .authContainer {
+        padding: 1.5rem;
+    }
+
+    .formRow {
+        grid-template-columns: 1fr;
+    }
+}
