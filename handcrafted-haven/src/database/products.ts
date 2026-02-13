@@ -30,9 +30,11 @@ function toUiProduct(p: DbProduct): UiProduct {
   const normalized =
     !raw || raw === "/none"
       ? "/favicon.ico"
-      : raw.startsWith("/")
+      : raw.startsWith("http://") || raw.startsWith("https://")
         ? raw
-        : `/${raw}`;
+        : raw.startsWith("/")
+          ? raw
+          : `/${raw}`;
 
   return {
     id: String(p.productid),

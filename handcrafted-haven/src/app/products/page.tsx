@@ -7,7 +7,11 @@ import ShoppingCart from "@/components/ShoppingCart";
 export default async function ProductsPage() {
   const products = await getUiProducts();
 
-  //console.log("FIRST PRODUCT:", products[0]);
+  /*console.log(
+    "RAPHIA PRODUCT:",
+    products.find((p) => p.name === "Raphia Basket"),
+  );*/
+
 
 
   return (
