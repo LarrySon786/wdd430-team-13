@@ -350,6 +350,23 @@ footer {
   }
 }
 
+/* About page layout improvement */
+
+.about-container {
+ max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  line-height: 1.6;
+}
+
+.about-container p {
+  margin-bottom: 1rem;
+}
 
 
 

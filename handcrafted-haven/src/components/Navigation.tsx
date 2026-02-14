@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
+import { useSession } from "next-auth/react";
 
-const navItems = [
+
+const baseNavItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/reviews", label: "Reviews" },
@@ -13,6 +15,8 @@ const navItems = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,8 +25,8 @@ export default function Navigation() {
   return (
     <>
       {/* Hamburger button for mobile */}
-      <button 
-        className="hamburger-btn" 
+      <button
+        className="hamburger-btn"
         onClick={toggleMenu}
         aria-label="Toggle menu"
         aria-expanded={isOpen}
@@ -41,7 +45,14 @@ export default function Navigation() {
 
         <nav aria-label="Main navigation">
           <ul>
-            {navItems.map((item) => (
+            {(session
+              ? [
+                  baseNavItems[0], // Home
+                  { href: "/seller/dashboard", label: "Dashboard" },
+                  ...baseNavItems.slice(1),
+                ]
+              : baseNavItems
+            ).map((item) => (
               <li key={item.href}>
                 <Link href={item.href} onClick={() => setIsOpen(false)}>
                   {item.label}
