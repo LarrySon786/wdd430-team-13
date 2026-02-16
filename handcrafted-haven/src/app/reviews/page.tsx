@@ -1,33 +1,23 @@
 import ReviewForm from "@/components/ReviewForm";
+import { getReviews, getProductsForReview } from "@/actions/reviewActions";
 import styles from "./reviews.module.css";
 
-export default function ReviewsPage() {
-  const sampleReviews = [
-    {
-      id: 1,
-      productName: "Ceramic Vase",
-      reviewerName: "Sarah M.",
-      rating: 5,
-      reviewText: "Absolutely beautiful craftsmanship! The vase arrived perfectly packaged and looks even better in person.",
-      date: "January 25, 2026",
-    },
-    {
-      id: 2,
-      productName: "Handwoven Basket",
-      reviewerName: "John D.",
-      rating: 4,
-      reviewText: "Great quality basket. Sturdy and well-made. Only giving 4 stars because shipping took a bit longer than expected.",
-      date: "January 20, 2026",
-    },
-    {
-      id: 3,
-      productName: "Wooden Cutting Board",
-      reviewerName: "Emily R.",
-      rating: 5,
-      reviewText: "This cutting board is a work of art! The wood grain is gorgeous and it's very functional.",
-      date: "January 15, 2026",
-    },
-  ];
+export default async function ReviewsPage() {
+  // Fetch real data from database
+  const [reviews, products] = await Promise.all([
+    getReviews(),
+    getProductsForReview(),
+  ]);
+
+  // Format date helper
+  const formatDate = (date?: Date) => {
+    if (!date) return "";
+    return new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   return (
     <main className={styles.reviewsPage}>
@@ -37,28 +27,34 @@ export default function ReviewsPage() {
       </p>
 
       <section className={styles.reviewFormSection}>
-        <ReviewForm />
+        <ReviewForm products={products} />
       </section>
 
       <section className={styles.reviewsListSection}>
         <h2>Recent Reviews</h2>
-        <div className={styles.reviewsList}>
-          {sampleReviews.map((review) => (
-            <div key={review.id} className={styles.reviewCard}>
-              <div className={styles.reviewHeader}>
-                <span className={styles.productName}>{review.productName}</span>
-                <span className={styles.rating}>
-                  {"⭐".repeat(review.rating)}
-                </span>
+        {reviews.length === 0 ? (
+          <p>No reviews yet. Be the first to leave a review!</p>
+        ) : (
+          <div className={styles.reviewsList}>
+            {reviews.map((review) => (
+              <div key={review.id} className={styles.reviewCard}>
+                <div className={styles.reviewHeader}>
+                  <span className={styles.productName}>
+                    {review.productname || "Unknown Product"}
+                  </span>
+                  <span className={styles.rating}>
+                    {"⭐".repeat(review.score)}
+                  </span>
+                </div>
+                <p className={styles.reviewText}>{review.message}</p>
+                <div className={styles.reviewFooter}>
+                  <span>— {review.reviewer_name}</span>
+                  <span>{formatDate(review.createdat)}</span>
+                </div>
               </div>
-              <p className={styles.reviewText}>{review.reviewText}</p>
-              <div className={styles.reviewFooter}>
-                <span>— {review.reviewerName}</span>
-                <span>{review.date}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
