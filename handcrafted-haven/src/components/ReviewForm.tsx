@@ -1,112 +1,88 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { createReview, type ReviewFormState } from "@/actions/reviewActions";
 import styles from "@/app/reviews/reviews.module.css";
 
-export default function ReviewForm() {
-  const [formData, setFormData] = useState({
-    productName: "",
-    reviewerName: "",
-    rating: 5,
-    reviewText: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+type Product = {
+  id: number;
+  name: string;
+};
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+type Props = {
+  products: Product[];
+};
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Review submitted:", formData);
-    setSubmitted(true);
+const initialState: ReviewFormState = {
+  success: false,
+  message: "",
+};
 
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        productName: "",
-        reviewerName: "",
-        rating: 5,
-        reviewText: "",
-      });
-    }, 3000);
-  };
+export default function ReviewForm({ products }: Props) {
+  const [state, formAction, pending] = useActionState(createReview, initialState);
 
   return (
-    <form onSubmit={handleSubmit} className={styles.reviewForm}>
+    <form action={formAction} className={styles.reviewForm}>
       <h2>Leave a Review</h2>
 
-      {submitted && (
-        <div className={styles.successMessage}>
-          Thank you for your review!
+      {state.message && (
+        <div className={state.success ? styles.successMessage : styles.errorMessage}>
+          {state.message}
         </div>
       )}
 
-      <div className={styles.formGroup}>
-        <label htmlFor="productName">Product Name</label>
-        <input
-          type="text"
-          id="productName"
-          name="productName"
-          value={formData.productName}
-          onChange={handleChange}
-          placeholder="Enter product name"
-          required
-        />
-      </div>
+      {!state.success && (
+        <>
+          <div className={styles.formGroup}>
+            <label htmlFor="productId">Product</label>
+            <select id="productId" name="productId" required>
+              <option value="">Select a product...</option>
+              {products.map((product) => (
+                <option key={product.id} value={product.id}>
+                  {product.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="reviewerName">Your Name</label>
-        <input
-          type="text"
-          id="reviewerName"
-          name="reviewerName"
-          value={formData.reviewerName}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          required
-        />
-      </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="reviewerName">Your Name</label>
+            <input
+              type="text"
+              id="reviewerName"
+              name="reviewerName"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="rating">Rating</label>
-        <select
-          id="rating"
-          name="rating"
-          value={formData.rating}
-          onChange={handleChange}
-          required
-        >
-          <option value={5}>⭐⭐⭐⭐⭐ (5 - Excellent)</option>
-          <option value={4}>⭐⭐⭐⭐ (4 - Very Good)</option>
-          <option value={3}>⭐⭐⭐ (3 - Good)</option>
-          <option value={2}>⭐⭐ (2 - Fair)</option>
-          <option value={1}>⭐ (1 - Poor)</option>
-        </select>
-      </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="score">Rating</label>
+            <select id="score" name="score" defaultValue="5" required>
+              <option value="5">⭐⭐⭐⭐⭐ (5 - Excellent)</option>
+              <option value="4">⭐⭐⭐⭐ (4 - Very Good)</option>
+              <option value="3">⭐⭐⭐ (3 - Good)</option>
+              <option value="2">⭐⭐ (2 - Fair)</option>
+              <option value="1">⭐ (1 - Poor)</option>
+            </select>
+          </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="reviewText">Your Review</label>
-        <textarea
-          id="reviewText"
-          name="reviewText"
-          value={formData.reviewText}
-          onChange={handleChange}
-          placeholder="Tell us about your experience with this product..."
-          rows={5}
-          required
-        />
-      </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="message">Your Review</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your experience with this product..."
+              rows={5}
+              required
+            />
+          </div>
 
-      <button type="submit" className={styles.submitBtn}>
-        Submit Review
-      </button>
+          <button type="submit" className={styles.submitBtn} disabled={pending}>
+            {pending ? "Submitting..." : "Submit Review"}
+          </button>
+        </>
+      )}
     </form>
   );
 }
