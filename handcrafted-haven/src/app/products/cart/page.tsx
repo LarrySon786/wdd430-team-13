@@ -29,7 +29,7 @@ export default function CartPage() {
               <h3>Total: ${total.toFixed(2)}</h3>
               <div className="check__out__buttons__container">
                 <button onClick={clearCart} className="clear__cart">Clear Cart </button>
-                <button className="checkout__button">Proceed to Checkout</button>
+                <Link className="checkout__link" href="/products/checkout">Proceed to Checkout</Link>
               </div>
             </div>
           </>
