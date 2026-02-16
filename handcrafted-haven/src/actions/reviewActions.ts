@@ -98,7 +98,7 @@ export async function getReviews(): Promise<Review[]> {
         r.createdat,
         p.name as productname
       FROM reviews r
-      LEFT JOIN products p ON r.productid = p.productid
+      LEFT JOIN products p ON r.productid::integer = p.productid
       ORDER BY r.createdat DESC
     `;
     return reviews;
@@ -121,7 +121,7 @@ export async function getReviewsByProduct(productId: number): Promise<Review[]> 
         r.createdat,
         p.name as productname
       FROM reviews r
-      LEFT JOIN products p ON r.productid = p.productid
+      LEFT JOIN products p ON r.productid::integer = p.productid
       WHERE r.productid = ${productId}
       ORDER BY r.createdat DESC
     `;
