@@ -90,7 +90,7 @@ export async function getReviews(): Promise<Review[]> {
   try {
     const reviews = await sql<Review[]>`
       SELECT 
-        r.id,
+        r.reviewid as id,
         r.score,
         r.message,
         r.productid,
@@ -113,7 +113,7 @@ export async function getReviewsByProduct(productId: number): Promise<Review[]> 
   try {
     const reviews = await sql<Review[]>`
       SELECT 
-        r.id,
+        r.reviewid as id,
         r.score,
         r.message,
         r.productid,
