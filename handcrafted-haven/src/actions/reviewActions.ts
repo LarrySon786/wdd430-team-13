@@ -25,7 +25,7 @@ export type ReviewFormState = {
 export async function getProductsForReview(): Promise<{ id: number; name: string }[]> {
   try {
     const products = await sql<{ id: number; name: string }[]>`
-      SELECT id, name FROM products ORDER BY name ASC
+      SELECT productid as id, name FROM products ORDER BY name ASC
     `;
     return products;
   } catch (error) {
@@ -98,7 +98,7 @@ export async function getReviews(): Promise<Review[]> {
         r.createdat,
         p.name as productname
       FROM reviews r
-      LEFT JOIN products p ON r.productid = p.id
+      LEFT JOIN products p ON r.productid = p.productid
       ORDER BY r.createdat DESC
     `;
     return reviews;
@@ -121,7 +121,7 @@ export async function getReviewsByProduct(productId: number): Promise<Review[]> 
         r.createdat,
         p.name as productname
       FROM reviews r
-      LEFT JOIN products p ON r.productid = p.id
+      LEFT JOIN products p ON r.productid = p.productid
       WHERE r.productid = ${productId}
       ORDER BY r.createdat DESC
     `;
