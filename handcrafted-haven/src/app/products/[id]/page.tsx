@@ -56,9 +56,9 @@ export default async function ProductDetailPage({
 
           <div className="product-detail__actions">
             <AddToCartButton product={product} />
-            <button className="btn btn--secondary" type="button">
+            {/* <button className="btn btn--secondary" type="button">
               Save
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
