@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Logo from "./Logo";
+import LogoClient from "./LogoClient";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -36,7 +36,7 @@ export default function Navigation() {
       {/* Navigation Sidebar */}
       <aside className={`navigation ${isOpen ? "nav-open" : ""}`}>
         <div>
-          <Logo />
+          <LogoClient />
         </div>
 
         <nav aria-label="Main navigation">
