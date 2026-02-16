@@ -77,13 +77,13 @@ export default async function SellerDashboard() {
                   </p>
                   <p className={styles.productDescription}>{product.description}</p>
                   <div className={styles.productActions}>
-                    <Link
+                    {/* <Link
                       href={`/seller/edit-product/${product.productid}`}
                       className={styles.editBtn}
                       style={{ textAlign: "center", textDecoration: "none" }}
                     >
                       Edit
-                    </Link>
+                    </Link> */}
                     <DeleteProductButton
                       productId={product.productid}
                       userId={session.user.id}
